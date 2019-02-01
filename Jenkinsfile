@@ -25,7 +25,7 @@ node {
   }
   stage('Deploy to Production') {
    // Run the maven build
-   sh "'${mvnHome}/bin/mvn' -f /usr/lib/node_modules/npm/apigee-ci-deploy-bdd-lint-master/hr-api/pom.xml install -Pprod -Dusername=<email_here> -Dpassword=<password_here>"
+   sh "'${mvnHome}/bin/mvn' -f /Users/sjana2/Documents/POC/node-v10.15.1/node_modules/npm/apigee-ci-deploy-bdd-lint-master/hr-api/pom.xml install -Pprod -Dusername=<email_here> -Dpassword=<password_here>"
   }
   try {
    stage('Integration Tests') {
@@ -33,7 +33,7 @@ node {
     env.NODEJS_HOME = "${tool 'nodejs'}"
     env.PATH = "/Users/sjana2/Documents/POC/node-v10.15.1/bin:${env.PATH}"
      // Copy the features to npm directory in case of cucumber not found error
-     //sh "cp $WORKSPACE/hr-api/test/features/prod_tests.feature /usr/lib/node_modules/npm"
+     sh "cp $WORKSPACE/hr-api/test/features/prod_tests.feature /Users/sjana2/Documents/POC/node-v10.15.1/node_modules/npm"
     sh "cd /Users/sjana2/Documents/POC/node-v10.15.1/node_modules/npm && cucumber-js --format json:reports.json features/prod_tests.feature"
    }
   } catch (e) {
