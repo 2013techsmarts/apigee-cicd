@@ -34,7 +34,7 @@ node {
     env.PATH = "/Users/sjana2/Documents/POC/node-v10.15.1/bin:${env.PATH}"
      // Copy the features to npm directory in case of cucumber not found error
      //sh "cp $WORKSPACE/hr-api/test/features/prod_tests.feature /usr/lib/node_modules/npm"
-    sh "cd /usr/lib/node_modules/npm && cucumber-js --format json:reports.json features/prod_tests.feature"
+    sh "cd /Users/sjana2/Documents/POC/node-v10.15.1/node_modules/npm && cucumber-js --format json:reports.json features/prod_tests.feature"
    }
   } catch (e) {
    //if tests fail, I have used an shell script which has 3 APIs to undeploy, delete current revision & deploy previous revision
@@ -43,7 +43,7 @@ node {
   } finally {
    // generate cucumber reports in both Test Pass/Fail scenario
    // to generate reports, cucumber plugin searches for an *.json file in Workspace by default
-   sh "cd /usr/lib/node_modules/npm && yes | cp -rf reports.json /var/lib/jenkins/workspace/apigee-devops"
+   sh "cd /Users/sjana2/Documents/POC/node-v10.15.1/node_modules/npm && yes | cp -rf reports.json /var/lib/jenkins/workspace/apigee-devops"
 
   }
  } catch (e) {
