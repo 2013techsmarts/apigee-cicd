@@ -12,8 +12,8 @@ node {
   }
   stage('Policy-Code Analysis') {
    // Run the maven build
-   env.NODEJS_HOME = "${tool 'nodejs'}"
-   env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+   //env.NODEJS_HOME = "${tool 'nodejs'}"
+   env.PATH = "/Users/sjana2/Documents/POC/node-v10.15.1/bin:${env.PATH}"
    sh "npm -v"
    sh "apigeelint -s /usr/lib/node_modules/npm/apigee-ci-deploy-bdd-lint-master/hr-api/apiproxy/ -f table.js"
   }
@@ -31,7 +31,7 @@ node {
    stage('Integration Tests') {
     // Run the maven build
     env.NODEJS_HOME = "${tool 'nodejs'}"
-    env.PATH = "${env.NODEJS_HOME}/bin:${env.PATH}"
+    env.PATH = "/Users/sjana2/Documents/POC/node-v10.15.1/bin:${env.PATH}"
      // Copy the features to npm directory in case of cucumber not found error
      //sh "cp $WORKSPACE/hr-api/test/features/prod_tests.feature /usr/lib/node_modules/npm"
     sh "cd /usr/lib/node_modules/npm && cucumber-js --format json:reports.json features/prod_tests.feature"
@@ -59,7 +59,7 @@ node {
 def notifySlack(String buildStatus = 'STARTED') {
  // Build status of null means success.
  cucumber '**/*.json'
- buildStatus = buildStatus ? : 'SUCCESS'
+ buildStatus = buildStatus ?: 'SUCCESS'
 
  def color
 
