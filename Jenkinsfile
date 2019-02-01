@@ -15,7 +15,7 @@ node {
    //env.NODEJS_HOME = "${tool 'nodejs'}"
    env.PATH = "/Users/sjana2/Documents/POC/node-v10.15.1/bin:${env.PATH}"
    sh "npm -v"
-   sh "apigeelint -s /usr/lib/node_modules/npm/apigee-ci-deploy-bdd-lint-master/hr-api/apiproxy/ -f table.js"
+   sh "apigeelint -s /Users/sjana2/Documents/POC/node-v10.15.1/node_modules/npm/apigee-ci-deploy-bdd-lint-master/hr-api/apiproxy/ -f table.js"
   }
 
   stage('Promotion') {
